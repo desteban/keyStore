@@ -3,19 +3,80 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: hsl(60, 100%, 100%);
+	--foreground: hsl(214, 44%, 19%);
+	--heading: hsl(214, 100%, 15%);
+	--sub-heading: hsl(214, 44%, 19%);
+	--background-button: hsl(171, 100%, 46%);
+	--foreground-button: hsl(214, 100%, 15%);
+	--card-background: hsl(210, 18%, 96%);
+	--card-heading: hsl(214, 100%, 15%);
+	--card-foreground: hsl(214, 44%, 19%);
+	--card-highlight: hsl(350, 100%, 66%);
+	--primary: hsl(171, 100%, 46%);
+	--secondary: hsl(350, 100%, 66%);
+	--tertiary: hsl(51, 98%, 65%);
+	--links: hsl(171, 100%, 46%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--background: hsl(216, 100%, 10%);
+		--foreground: hsl(216, 45%, 81%);
+		--heading: hsl(60, 100%, 100%);
+		--sub-heading: hsl(60, 100%, 100%);
+		--background-button: hsl(51, 98%, 65%);
+		--foreground-button: hsl(214, 44%, 19%);
+		--card-background: hsl(210, 18%, 96%);
+		--card-heading: hsl(214, 100%, 15%);
+		--card-foreground: hsl(214, 44%, 19%);
+		--card-highlight: hsl(350, 100%, 66%);
+		--primary: hsl(171, 100%, 46%);
+		--secondary: hsl(350, 100%, 66%);
+		--tertiary: hsl(51, 98%, 65%);
+		--links: hsl(171, 100%, 46%);
+	}
+} */
+
+.dark {
+  --background: hsl(216, 100%, 10%);
+  --foreground: hsl(216, 45%, 81%);
+  --heading: hsl(60, 100%, 100%);
+  --sub-heading: hsl(60, 100%, 100%);
+  --background-button: hsl(51, 98%, 65%);
+  --foreground-button: hsl(214, 44%, 19%);
+  --card-background: hsl(210, 18%, 96%);
+  --card-heading: hsl(214, 100%, 15%);
+  --card-foreground: hsl(214, 44%, 19%);
+  --card-highlight: hsl(350, 100%, 66%);
+  --primary: hsl(171, 100%, 46%);
+  --secondary: hsl(350, 100%, 66%);
+  --tertiary: hsl(51, 98%, 65%);
+  --links: hsl(171, 100%, 46%);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--foreground);
+	background: var(--background);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+	color: var(--foreground);
+}
+
+a {
+	color: var(--links);
+}
+
+h1 {
+	color: var(--heading);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--sub-heading);
 }
