@@ -1,20 +1,47 @@
 'use client';
 
-import { ThemeContext } from '@/Context/ThemeContext';
 import { Button } from '@/components/ui/Button/Button';
 import { Card } from '@/components/ui/Card/Card';
 import { CardChip } from '@/components/ui/Card/CardChip';
 import { CardTitle } from '@/components/ui/Card/CardTitle';
+import Carrousel from '@/components/ui/Carrousel';
+import { ItemCarrousel } from '@/components/ui/Carrousel/ItemCarrousel';
 import ChangeThemeButton from '@/components/ui/ChangoThemeButton/ChangeThemeButton';
-import { useContext } from 'react';
+
+import image1 from '@assets/1.jpg';
+import image2 from '@assets/2.jpg';
+import image3 from '@assets/3.jpg';
+import image4 from '@assets/4.jpg';
 
 export default function Home() {
-	const { changeTheme } = useContext(ThemeContext);
+	const carouselImages: ItemCarrousel[] = [
+		{
+			alt: 'random',
+			src: image1.src,
+		},
+		{
+			alt: 'random',
+			src: image2.src,
+		},
+		{
+			alt: 'random',
+			src: image3.src
+		},
+		{
+			alt: 'random',
+			src: image4.src
+		},
+	];
 
 	return (
 		<div className="container mx-auto px-4">
+			<div className="px-4 py-4">
+				<ChangeThemeButton />
+			</div>
 
-			<ChangeThemeButton />
+			<div className="relative">
+				<Carrousel id="offer" items={carouselImages} />
+			</div>
 
 			<h1 className="text-4xl font-bold mt-10">Hello, world!</h1>
 			<p className="mt-4">
@@ -24,9 +51,7 @@ export default function Home() {
 				</a>{' '}
 				project with Tailwind CSS and TypeScript.
 			</p>
-			<Button onClick={changeTheme} className="mt-4">
-				Change theme
-			</Button>
+			<Button className="mt-4">Change theme</Button>
 
 			<Card>
 				<h2>
