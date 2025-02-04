@@ -1,3 +1,4 @@
+import { MatchVariant } from './MatchVariant';
 import { Variants } from './Variants';
 import styles from './styles.module.css';
 
@@ -15,26 +16,26 @@ export function Button({
 	variant = 'primary',
 }: ButtonProps) {
 	let cssClass = styles.btn;
+	cssClass += ` ${MatchVariant(variant)}`;
+	// if (variant === 'primary') {
+	// 	cssClass += ` ${styles.primary}`;
+	// }
 
-	if (variant === 'primary') {
-		cssClass += ` ${styles.primary}`;
-	}
+	// if (variant === 'secondary') {
+	// 	cssClass += ` ${styles.secondary}`;
+	// }
 
-	if (variant === 'secondary') {
-		cssClass += ` ${styles.secondary}`;
-	}
+	// if (variant === 'tertiary') {
+	// 	cssClass += ` ${styles.tertiary}`;
+	// }
 
-	if (variant === 'tertiary') {
-		cssClass += ` ${styles.tertiary}`;
-	}
+	// if (variant === 'outline') {
+	// 	cssClass += ` ${styles.outline}`;
+	// }
 
-	if (variant === 'outline') {
-		cssClass += ` ${styles.outline}`;
-	}
-
-	if (variant === 'text') {
-		cssClass += ` ${styles.text}`;
-	}
+	// if (variant === 'text') {
+	// 	cssClass += ` ${styles.text}`;
+	// }
 
 	cssClass += className ? ` ${className}` : '';
 	return (
