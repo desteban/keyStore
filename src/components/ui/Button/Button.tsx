@@ -7,6 +7,7 @@ interface ButtonProps {
 	children: React.ReactNode;
 	className?: string;
 	variant?: Variants;
+	'aria-label'?: string;
 }
 
 export function Button({
@@ -14,32 +15,14 @@ export function Button({
 	onClick,
 	className,
 	variant = 'primary',
+	'aria-label': ariaLabel,
 }: ButtonProps) {
 	let cssClass = styles.btn;
 	cssClass += ` ${MatchVariant(variant)}`;
-	// if (variant === 'primary') {
-	// 	cssClass += ` ${styles.primary}`;
-	// }
-
-	// if (variant === 'secondary') {
-	// 	cssClass += ` ${styles.secondary}`;
-	// }
-
-	// if (variant === 'tertiary') {
-	// 	cssClass += ` ${styles.tertiary}`;
-	// }
-
-	// if (variant === 'outline') {
-	// 	cssClass += ` ${styles.outline}`;
-	// }
-
-	// if (variant === 'text') {
-	// 	cssClass += ` ${styles.text}`;
-	// }
 
 	cssClass += className ? ` ${className}` : '';
 	return (
-		<button className={cssClass} onClick={onClick}>
+		<button className={cssClass} onClick={onClick} aria-label={ariaLabel}>
 			{children}
 		</button>
 	);

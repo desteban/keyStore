@@ -5,13 +5,17 @@ import { Button } from '@/components/ui/Button/Button';
 import { Card } from '@/components/ui/Card/Card';
 import { CardChip } from '@/components/ui/Card/CardChip';
 import { CardTitle } from '@/components/ui/Card/CardTitle';
+import ChangeThemeButton from '@/components/ui/ChangoThemeButton/ChangeThemeButton';
 import { useContext } from 'react';
 
 export default function Home() {
 	const { changeTheme } = useContext(ThemeContext);
 
 	return (
-		<div className="container mx-auto">
+		<div className="container mx-auto px-4">
+
+			<ChangeThemeButton />
+
 			<h1 className="text-4xl font-bold mt-10">Hello, world!</h1>
 			<p className="mt-4">
 				This is a{' '}
@@ -20,7 +24,7 @@ export default function Home() {
 				</a>{' '}
 				project with Tailwind CSS and TypeScript.
 			</p>
-			<Button onClick={changeTheme} className="mt-4" variant='primary'>
+			<Button onClick={changeTheme} className="mt-4">
 				Change theme
 			</Button>
 

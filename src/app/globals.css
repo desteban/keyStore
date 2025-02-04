@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-	--background: hsl(60 100% 100%);
+	--background: hsl(0, 0%, 96%);
 	--foreground: hsl(214 44% 19%);
 	--heading: hsl(214 100% 15%);
 	--sub-heading: hsl(214 44% 19%);
@@ -12,7 +12,7 @@
 	--background-button-hover: hsl(171 100% 46% / 0.6);
 	--foreground-button: hsl(214 100% 15%);
 
-	--card-background: hsl(210 18% 96%);
+	--card-background: hsl(0, 0%, 100%);
 	--card-heading: hsl(214 100% 15%);
 	--card-foreground: hsl(214 44% 19%);
 	--card-highlight: hsl(350 100% 66%);
