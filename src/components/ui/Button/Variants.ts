@@ -1,1 +1,1 @@
-export type Variants= 'primary' | 'outline' | 'text';
+export type Variants= 'primary' | 'secondary' | 'tertiary' | 'outline' | 'text';

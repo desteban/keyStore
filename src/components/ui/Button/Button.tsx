@@ -8,17 +8,6 @@ interface ButtonProps {
 	variant?: Variants;
 }
 
-// type Matchchest = Record<Variants, string>;
-
-// function MatchVariant(variant: Variants) {
-// 	const matchers: Matchchest = {
-// 		primary: styles.primary,
-// 		outline: styles.outline,
-// 		text: styles.text,
-// 	};
-// 	return matchers[variant] ?? styles.primary;
-// }
-
 export function Button({
 	children,
 	onClick,
@@ -29,6 +18,14 @@ export function Button({
 
 	if (variant === 'primary') {
 		cssClass += ` ${styles.primary}`;
+	}
+
+	if (variant === 'secondary') {
+		cssClass += ` ${styles.secondary}`;
+	}
+
+	if (variant === 'tertiary') {
+		cssClass += ` ${styles.tertiary}`;
 	}
 
 	if (variant === 'outline') {

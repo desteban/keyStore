@@ -2,17 +2,27 @@
 	font-weight: 600;
 	padding: 0.5rem 1rem;
 	border: none;
-	@apply rounded-md;
+	border-radius: var(--rounded);
+	transition: background-color 0.3s ease;
 }
 
 .primary {
 	background-color: var(--background-button);
 	color: var(--foreground-button);
-	transition: background-color 0.3s ease;
 
 	&:hover {
 		background-color: var(--background-button-hover);
 	}
+}
+
+.secondary {
+	background-color: var(--secondary);
+	color: var(--foreground-button);
+}
+
+.tertiary {
+	background-color: var(--tertiary);
+	color: var(--foreground-button);
 }
 
 .outline {
@@ -21,6 +31,6 @@
 
 	&:hover {
 		@apply border-gray-400;
-        text-decoration: underline;
+		text-decoration: underline;
 	}
 }

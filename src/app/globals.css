@@ -7,59 +7,54 @@
 	--foreground: hsl(214 44% 19%);
 	--heading: hsl(214 100% 15%);
 	--sub-heading: hsl(214 44% 19%);
+
 	--background-button: hsl(171 100% 46%);
-	--background-button-hover: hsl(171 100% 46% / .6);
+	--background-button-hover: hsl(171 100% 46% / 0.6);
 	--foreground-button: hsl(214 100% 15%);
+
 	--card-background: hsl(210 18% 96%);
 	--card-heading: hsl(214 100% 15%);
 	--card-foreground: hsl(214 44% 19%);
 	--card-highlight: hsl(350 100% 66%);
+
 	--primary: hsl(171 100% 46%);
 	--secondary: hsl(350 100% 66%);
 	--tertiary: hsl(51 98% 65%);
-	--links: hsl(171 100% 46%);
+	--links: hsl(171 100% 26%);
+
+	--rounded: 0.4rem;
+	--rounded-lg: 0.6rem;
 }
 
 /* @media (prefers-color-scheme: dark) {
 	:root {
-		--background: hsl(216 100% 10%);
-		--foreground: hsl(216 45% 81%);
-		--heading: hsl(60 100% 100%);
-		--sub-heading: hsl(60 100% 100%);
-		--background-button: hsl(51 98% 65%);
-		--foreground-button: hsl(214 44% 19%);
-		--card-background: hsl(210 18% 96%);
-		--card-heading: hsl(214 100% 15%);
-		--card-foreground: hsl(214 44% 19%);
-		--card-highlight: hsl(350 100% 66%);
-		--primary: hsl(171 100% 46%);
-		--secondary: hsl(350 100% 66%);
-		--tertiary: hsl(51 98% 65%);
-		--links: hsl(171 100% 46%);
 	}
 } */
 
 .dark {
-  --background: hsl(216 100% 10%);
-  --foreground: hsl(216 45% 81%);
-  --heading: hsl(60 100% 100%);
-  --sub-heading: hsl(60 100% 100%);
-  --background-button: hsl(51 98% 65%);
-  --background-button-hover: hsl(51 98% 65% / .6);
-  --foreground-button: hsl(214 44% 19%);
-  --card-background: hsl(210 18% 96%);
-  --card-heading: hsl(214 100% 15%);
-  --card-foreground: hsl(214 44% 19%);
-  --card-highlight: hsl(350 100% 66%);
-  --primary: hsl(171 100% 46%);
-  --secondary: hsl(350 100% 66%);
-  --tertiary: hsl(51 98% 65%);
-  --links: hsl(171 100% 46%);
+	--background: hsl(216 100% 10%);
+	--foreground: hsl(216 45% 81%);
+	--heading: hsl(60 100% 100%);
+	--sub-heading: hsl(60 100% 100%);
+
+	--background-button: hsl(51 98% 65%);
+	--background-button-hover: hsl(51 98% 65% / 0.6);
+	--foreground-button: hsl(214 44% 19%);
+
+	--card-background: hsl(210 18% 96%);
+	--card-heading: hsl(214 100% 15%);
+	--card-foreground: hsl(214 44% 19%);
+	--card-highlight: hsl(350 100% 66%);
+
+	--primary: hsl(171 100% 46%);
+	--secondary: hsl(350 100% 66%);
+	--tertiary: hsl(51 98% 65%);
+	--links: hsl(170 100% 46%);
 }
 
 @theme {
 	--color-fondo: hsl(216, 100%, 10%);
-  }
+}
 
 body {
 	color: var(--foreground);
@@ -68,11 +63,13 @@ body {
 }
 
 p {
-	color: var(--foreground);
+	text-wrap: balance;
 }
 
 a {
 	color: var(--links);
+	font-weight: 700;
+	text-decoration: underline;
 }
 
 h1 {
@@ -85,4 +82,5 @@ h4,
 h5,
 h6 {
 	color: var(--sub-heading);
+	text-wrap: pretty;
 }

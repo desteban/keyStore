@@ -1,0 +1,42 @@
+.card {
+	background-color: var(--card-background);
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin: 20px;
+	color: var(--card-foreground);
+	border-radius: var(--rounded);
+	@apply shadow-md;
+
+	& a {
+		color: var(--card-highlight);
+	}
+}
+
+.card-title,
+.card-subtitle {
+	color: var(--card-heading);
+	font-weight: 700;
+	margin-bottom: 0.75rem;
+	font-size: 1.2rem;
+	line-height: 2rem;
+}
+
+.card-title * {
+	color: var(--card-heading);
+}
+
+.card-highlight,
+.card-highlight * {
+	color: var(--card-highlight);
+	font-weight: 700;
+}
+
+.card-chip {
+	background-color: var(--background);
+	color: var(--foreground);
+	border-radius: var(--rounded);
+	padding: 0.25rem 0.5rem;
+	width: fit-content;
+	font-weight: 500;
+}
