@@ -1,0 +1,26 @@
+.btn {
+	font-weight: 600;
+	padding: 0.5rem 1rem;
+	border: none;
+	@apply rounded-md;
+}
+
+.primary {
+	background-color: var(--background-button);
+	color: var(--foreground-button);
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: var(--background-button-hover);
+	}
+}
+
+.outline {
+	@apply shadow-sm;
+	@apply border border-solid border-gray-300 transition duration-75;
+
+	&:hover {
+		@apply border-gray-400;
+        text-decoration: underline;
+	}
+}
