@@ -1,36 +1,48 @@
-import { useEffect, useState } from 'react';
-import { ItemCarrousel, CarouselImage } from './ItemCarrousel';
+import React, { Children, useEffect, useState } from 'react';
+import { ItemCarrousel } from './ItemCarrousel';
 import { Button } from '../Button/Button';
+import styles from './styles.module.css';
 
 interface CarouselProps {
 	className?: string;
 	id?: string;
-	items: ItemCarrousel[];
 	interval?: number;
+	children: React.ReactNode;
 }
 
 export default function Carrousel({
 	id,
-	items,
 	className,
 	interval = 3000,
+	children,
 }: CarouselProps) {
+	const size = Children.count(children);
 	const [currentItem, setCurrentItem] = useState(0);
-	const stylesCarouselContainer = `relative flex flex-row items-center overflow-hidden h-56 md:h-96 gap-1 ${className}`;
+	const stylesCarouselContainer = `${styles['carousel-container']} ${className}`;
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			Next();
 		}, interval);
 		return () => clearInterval(intervalId);
-	}, [currentItem, items.length]);
+	}, [currentItem, size]);
+
+	const ChildrenWithProps = Children.map(children, (child, index) => {
+		if (React.isValidElement(child)) {
+			return React.cloneElement(child as React.ReactElement<ItemCarrousel>, {
+				active: currentItem === index,
+			});
+		}
+
+		return child;
+	});
 
 	const Prev = () => {
-		setCurrentItem((item) => (item - 1 < 0 ? items.length - 1 : item - 1));
+		setCurrentItem((item) => (item - 1 < 0 ? size - 1 : item - 1));
 	};
 
 	const Next = () => {
-		setCurrentItem((currentItem + 1) % items.length);
+		setCurrentItem((currentItem + 1) % size);
 	};
 
 	return (
@@ -41,15 +53,7 @@ export default function Carrousel({
 				</Button>
 			</div>
 
-			<div className="px-2 h-full flex overflow items-center justify-center">
-				{items.map((item, index) => (
-					<CarouselImage
-						key={index}
-						{...item}
-						className={index === currentItem ? 'flex-1' : 'flex-[0]'}
-					/>
-				))}
-			</div>
+			<div className={styles['carousel-slider-container']}>{ChildrenWithProps}</div>
 
 			<div>
 				<Button variant="outline" onClick={Next}>

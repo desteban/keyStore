@@ -1,3 +1,22 @@
+.carousel-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+
+	@apply h-56 md:h-96 gap-1;
+}
+
+.carousel-slider-container {
+	padding: 0.5rem;
+	height: full;
+	overflow: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .item {
-    @apply absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+	@apply absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
 }
