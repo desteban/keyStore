@@ -1,22 +1,58 @@
 .carousel-container {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow: hidden;
+    gap: 1rem;
 
-	@apply h-56 md:h-96 gap-1;
+	@apply h-56 md:h-96;
 }
 
 .carousel-slider-container {
-	padding: 0.5rem;
-	height: full;
+	/* padding: 0.5rem; */
+	height: 100%;
 	overflow: auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: 100%;
+	transition: opacity ease 100ms;
 }
 
 .item {
 	@apply absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+}
+
+@keyframes hide {
+	from {
+		width: 100%;
+	}
+
+	to {
+		width: 0px;
+		padding: 0px;
+		display: none;
+	}
+}
+
+@keyframes show {
+	0% {
+		display: block;
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.hide-content {
+	display: none;
+	animation: hide 300ms ease-in;
+}
+
+.show-content {
+	animation: show 300ms ease-out;
 }

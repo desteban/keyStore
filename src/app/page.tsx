@@ -1,17 +1,9 @@
-'use client';
-
 import { Button } from '@/components/ui/Button/Button';
 import { Card } from '@/components/ui/Card/Card';
 import { CardChip } from '@/components/ui/Card/CardChip';
 import { CardTitle } from '@/components/ui/Card/CardTitle';
-import Carrousel from '@/components/ui/Carrousel';
-import { CarouselImage, ItemCarrousel } from '@/components/ui/Carrousel/ItemCarrousel';
 import ChangeThemeButton from '@/components/ui/ChangoThemeButton/ChangeThemeButton';
-
-import image1 from '@assets/1.jpg';
-import image2 from '@assets/2.jpg';
-import image3 from '@assets/3.jpg';
-import image4 from '@assets/4.jpg';
+import Slides from './components/Slides';
 
 export default function Home() {
 	return (
@@ -20,14 +12,7 @@ export default function Home() {
 				<ChangeThemeButton />
 			</div>
 
-			<div className="relative">
-				<Carrousel id="offer">
-					<CarouselImage alt="random" src={image1.src} />
-					<CarouselImage alt="random" src={image2.src} />
-					<CarouselImage alt="random" src={image3.src} />
-					<CarouselImage alt="random" src={image4.src} />
-				</Carrousel>
-			</div>
+			<Slides />
 
 			<h1 className="text-4xl font-bold mt-10">Hello, world!</h1>
 			<p className="mt-4">

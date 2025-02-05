@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Children, useEffect, useState } from 'react';
 import { ItemCarrousel } from './ItemCarrousel';
 import { Button } from '../Button/Button';
@@ -30,7 +32,7 @@ export default function Carrousel({
 	const ChildrenWithProps = Children.map(children, (child, index) => {
 		if (React.isValidElement(child)) {
 			return React.cloneElement(child as React.ReactElement<ItemCarrousel>, {
-				active: currentItem === index,
+				status: currentItem === index ? 'enable' : 'disable',
 			});
 		}
 

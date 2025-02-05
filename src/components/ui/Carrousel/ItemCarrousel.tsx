@@ -1,20 +1,48 @@
+'use client';
+import style from './styles.module.css';
+type status = 'enable' | 'disable';
+
 export interface ItemCarrousel {
-	src: string;
-	alt: string;
-	active?: boolean;
+	src?: string;
+	alt?: string;
+	status?: status;
 	className?: string;
+	children?: React.ReactNode;
 }
 
-export function CarouselImage(props: ItemCarrousel) {
+export function CarouselImage({
+	alt,
+	src,
+	children,
+	className,
+	status = 'disable',
+}: ItemCarrousel) {
+	const ShowImage = () => {
+		if (src) {
+			return (
+				<picture className="max-h-full overflow-hidden">
+					<img src={src} alt={alt} className="h-auto w-full object-cover" />
+				</picture>
+			);
+		}
+	};
+
+	const ShowChildren = () => {
+		const classContainer =
+			status !== 'enable' ? style['hide-content'] : style['show-content'];
+		return <div className={`${classContainer}`}>{children}</div>;
+	};
+
 	return (
-		<picture
-			className={`duration-700 ease-in-out flex items-center justify-center ${
-				props.className
+		<div
+			className={`relative duration-700 ease-in-out max-h-full overflow-hidden  ${
+				className || ''
 			}
-			${props.active ? 'flex-1' : 'flex-[0]'}`}
+			${status == 'enable' ? 'flex-1' : 'flex-[0]'}`}
 			data-carousel-item
 		>
-			<img {...props} className="h-full w-full object-cover" />
-		</picture>
+			<ShowChildren />
+			<ShowImage />
+		</div>
 	);
 }
