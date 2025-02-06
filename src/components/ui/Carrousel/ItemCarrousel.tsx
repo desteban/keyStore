@@ -17,6 +17,8 @@ export function CarouselImage({
 	className,
 	status = 'disable',
 }: ItemCarrousel) {
+	const classSlide = `${style.slide} ${className || ''}`;
+
 	const ShowImage = () => {
 		if (src) {
 			return (
@@ -35,11 +37,9 @@ export function CarouselImage({
 
 	return (
 		<div
-			className={`relative duration-700 ease-in-out max-h-full overflow-hidden  ${
-				className || ''
-			}
-			${status == 'enable' ? 'flex-1' : 'flex-[0]'}`}
-			data-carousel-item
+			className={`${classSlide} ${
+				status == 'enable' ? style['slide-open'] : style['slide-close']
+			}`}
 		>
 			<ShowChildren />
 			<ShowImage />

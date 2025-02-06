@@ -30,10 +30,10 @@ export default function Slides() {
 				<CarouselImage>
 					<Ele />
 				</CarouselImage>
-				{/* <CarouselImage>
+
+				{/* <CarouselImage alt="random" src={image1.src}>
 					<Ele />
 				</CarouselImage> */}
-				<CarouselImage alt="random" src={image2.src} />
 				<CarouselImage>
 					<figure className="w-full h-full">
 						<img alt="random" src={image2.src} className="w-full object-cover" />
