@@ -4,7 +4,7 @@
 	flex-direction: row;
 	align-items: center;
 	overflow: hidden;
-	gap: 1rem;
+	gap: 0.75rem;
 
 	@apply h-56 md:h-96;
 }
@@ -17,6 +17,7 @@
 	justify-content: center;
 	width: 100%;
 	transition: opacity ease 100ms;
+	border-radius: var(--rounded);
 }
 
 .slide {
@@ -25,6 +26,7 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	max-height: 100%;
 	overflow: hidden;
+	border-radius: var(--rounded);
 }
 
 .slide-open {

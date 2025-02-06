@@ -4,7 +4,17 @@ import { ThemeContext } from '@/Context/ThemeContext';
 import { useContext } from 'react';
 import { Button } from '../Button/Button';
 
-export default function ChangeThemeButton() {
+interface props {
+	className?: string;
+	'aria-label'?: string;
+	title?: string;
+}
+
+export default function ChangeThemeButton({
+	className = '',
+	'aria-label': ariaLabel,
+	title,
+}: props) {
 	const { changeTheme, theme } = useContext(ThemeContext);
 	const sizeIcons = 20;
 
@@ -42,7 +52,9 @@ export default function ChangeThemeButton() {
 		<Button
 			variant="none"
 			onClick={changeTheme}
-			aria-label="Cambiar el tema de la pagina"
+			aria-label={ariaLabel || 'Cambiar el tema de la pagina'}
+			title={title}
+			className={className}
 		>
 			<Icon />
 		</Button>
