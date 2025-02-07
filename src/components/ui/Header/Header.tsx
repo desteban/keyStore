@@ -4,7 +4,8 @@ import { useState } from 'react';
 import ChangeThemeButton from '../ChangeThemeButton/ChangeThemeButton';
 import { MatchHeaderStyles, Variants } from './HeaderStyles';
 import styles from './styles.module.css';
-import { createPortal } from 'react-dom';
+import { Button } from '../Button/Button';
+import Drawer from '../Drawer/Drawer';
 
 interface props {
 	variant?: Variants;
@@ -12,41 +13,27 @@ interface props {
 }
 
 export default function Header({ variant = 'static', className = '' }: props) {
-	const [isOpen, setIsOpen] = useState(false);
+	const [open, setOpen] = useState<boolean>(false);
 	const headerStyles = styles.header + ' ' + MatchHeaderStyles(variant) + className;
 
-	const toggleOpen = () => {
-		const next = !isOpen;
-		document.querySelector('body')?.classList.toggle('overflow-hidden');
-
-		setIsOpen(next);
-	};
-
-	const Background = () => {
-		if (isOpen) {
-			return (
-				<div
-					className={`${styles.background} ${styles['background-open']}`}
-					onClick={toggleOpen}
-				></div>
-			);
-		}
-
-		return null;
-	};
+	const toggleOpenDrawer = () => setOpen((old) => !old);
 
 	return (
 		<header className={headerStyles}>
 			<div>
 				<nav>
-					<button onClick={toggleOpen}>open</button>
-					<ChangeThemeButton title="Cambiar tema de la aplicación" />
+					<Button variant="none" onClick={toggleOpenDrawer}>
+						menu
+					</Button>
+					<ChangeThemeButton />
 				</nav>
 			</div>
 
-			<div></div>
-
-			{createPortal(<Background />, document.body)}
+			<Drawer open={open} onClose={toggleOpenDrawer}>
+				<div>
+					<h5>Menu Drawer</h5>
+				</div>
+			</Drawer>
 		</header>
 	);
 }
