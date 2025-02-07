@@ -9,7 +9,7 @@ import image4 from '@assets/4.jpg';
 
 export default function Slides() {
 	return (
-		<div className="relative">
+		<div className="relative px-5">
 			<Carrousel id="offer" interval={6000} className="mt-4">
 				<CarouselImage alt="random" src={image1.src} />
 				<CarouselImage>
