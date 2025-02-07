@@ -1,0 +1,38 @@
+.container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	overflow: hidden;
+	@apply h-56 md:h-96;
+}
+
+.carousel {
+	position: relative;
+	overflow: hidden;
+	order: 2;
+}
+
+.carousel-inner {
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+	border-radius: var(--rounded);
+}
+
+.carousel-item {
+	min-width: 100%;
+	padding: 0.5rem;
+}
+
+.carousel-item img {
+	width: 100%;
+	height: auto;
+}
+
+.carousel-control-prev {
+	order: 1;
+}
+
+.carousel-control-next {
+	order: 3;
+}

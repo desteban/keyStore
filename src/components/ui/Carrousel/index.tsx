@@ -1,15 +1,17 @@
 'use client';
 
-import React, { Children, useEffect, useState } from 'react';
-import { ItemCarrousel } from './ItemCarrousel';
+import React, { Children, useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import styles from './styles.module.css';
+
+type ScrollType = 'simply' | 'smooth';
 
 interface CarouselProps {
 	className?: string;
 	id?: string;
 	interval?: number;
 	children: React.ReactNode;
+	scrollType?: ScrollType;
 }
 
 export default function Carrousel({
@@ -17,34 +19,59 @@ export default function Carrousel({
 	className,
 	interval = 3000,
 	children,
+	scrollType = 'smooth',
 }: CarouselProps) {
 	const size = Children.count(children);
 	const [currentItem, setCurrentItem] = useState(0);
 	const stylesCarouselContainer = `${styles['carousel-container']} ${className}`;
+	const carouselInner = useRef<HTMLDivElement>(null);
+	const openSlide = styles['carousel-inner-item-open'];
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			Next();
 		}, interval);
 		return () => clearInterval(intervalId);
-	}, [currentItem, size]);
+	}, [interval, size, currentItem]);
 
-	const ChildrenWithProps = Children.map(children, (child, index) => {
-		if (React.isValidElement(child)) {
-			return React.cloneElement(child as React.ReactElement<ItemCarrousel>, {
-				status: currentItem === index ? 'enable' : 'disable',
-			});
-		}
-
-		return child;
-	});
+	useEffect(() => {
+		carouselInner.current?.children[0].classList.add(openSlide);
+	}, []);
 
 	const Prev = () => {
-		setCurrentItem((item) => (item - 1 < 0 ? size - 1 : item - 1));
+		const slide = currentItem - 1 < 0 ? size - 1 : currentItem - 1;
+		setCurrentItem(slide);
+		changeSlide(slide);
 	};
 
 	const Next = () => {
-		setCurrentItem((currentItem + 1) % size);
+		const slide = (currentItem + 1) % size;
+		setCurrentItem(slide);
+		changeSlide(slide);
+	};
+
+	const smoothScroll = (scrollBySliding: number) => {
+		for (let index = 0; index < size; index++) {
+			if (scrollBySliding === index) {
+				carouselInner.current?.children[index].classList.add(openSlide);
+			} else {
+				carouselInner.current?.children[index].classList.remove(openSlide);
+			}
+		}
+	};
+
+	const simplyScroll = (scrollBySliding: number) => {
+		console.log('simply', scrollBySliding);
+	};
+
+	const changeSlide = (slide: number) => {
+		if (scrollType === 'simply') {
+			simplyScroll(slide);
+		}
+
+		if (scrollType === 'smooth') {
+			smoothScroll(slide);
+		}
 	};
 
 	return (
@@ -55,7 +82,9 @@ export default function Carrousel({
 				</Button>
 			</div>
 
-			<div className={styles['carousel-slider-container']}>{ChildrenWithProps}</div>
+			<div ref={carouselInner} className={styles['carousel-slider-container']}>
+				{children}
+			</div>
 
 			<div>
 				<Button variant="outline" onClick={Next}>
