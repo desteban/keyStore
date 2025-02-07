@@ -6,8 +6,6 @@
 	align-items: center;
 	overflow: hidden;
 	gap: 0.75rem;
-
-	@apply h-56 md:h-96;
 }
 
 .carousel {
@@ -19,6 +17,8 @@
 
 .carousel-slider-container {
 	/* carousel-inner */
+	position: relative;
+	height: 100%;
 	height: 100%;
 	overflow: auto;
 	display: flex;
@@ -30,12 +30,12 @@
 }
 
 .carousel-inner-item {
-	/* carousel item */
 	position: relative;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
 	transition-duration: 700ms;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	max-height: 100%;
-	overflow: hidden;
 }
 
 .carousel-inner-item-open {
@@ -43,11 +43,13 @@
 }
 
 .carousel-inner-item-close {
+	width: 100%;
 	flex: 0;
 }
 
 @keyframes hide {
 	from {
+		min-width: 100%;
 		transform: scale(1);
 	}
 	to {
@@ -56,7 +58,7 @@
 }
 
 @keyframes show {
-	0% {
+	/* 0% {
 		display: block;
 		transform: translateY(-100%);
 		opacity: 0;
@@ -64,11 +66,17 @@
 	100% {
 		transform: translateY(0);
 		opacity: 1;
+	} */
+	from {
+		transition: scale(0);
+	}
+	to {
+		transition: scale(1);
 	}
 }
 
 .hide-content-smooth {
-	animation: hide 500ms ease-in;
+	animation: hide 700ms ease-in;
 }
 
 .show-content-smooth {

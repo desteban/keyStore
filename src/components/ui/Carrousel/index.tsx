@@ -38,24 +38,18 @@ export default function Carrousel({
 		carouselInner.current?.children[0].classList.add(openSlide);
 	}, []);
 
-	const Prev = () => {
-		const slide = currentItem - 1 < 0 ? size - 1 : currentItem - 1;
-		setCurrentItem(slide);
-		changeSlide(slide);
-	};
-
-	const Next = () => {
-		const slide = (currentItem + 1) % size;
-		setCurrentItem(slide);
-		changeSlide(slide);
-	};
-
 	const smoothScroll = (scrollBySliding: number) => {
 		for (let index = 0; index < size; index++) {
 			if (scrollBySliding === index) {
 				carouselInner.current?.children[index].classList.add(openSlide);
+				carouselInner.current?.children[index].classList.remove(
+					styles['hide-content-smooth'],
+				);
 			} else {
 				carouselInner.current?.children[index].classList.remove(openSlide);
+				carouselInner.current?.children[index].classList.add(
+					styles['hide-content-smooth'],
+				);
 			}
 		}
 	};
@@ -72,6 +66,18 @@ export default function Carrousel({
 		if (scrollType === 'smooth') {
 			smoothScroll(slide);
 		}
+	};
+
+	const Prev = () => {
+		const slide = currentItem - 1 < 0 ? size - 1 : currentItem - 1;
+		setCurrentItem(slide);
+		changeSlide(slide);
+	};
+
+	const Next = () => {
+		const slide = (currentItem + 1) % size;
+		setCurrentItem(slide);
+		changeSlide(slide);
 	};
 
 	return (

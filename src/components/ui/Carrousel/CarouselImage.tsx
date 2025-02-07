@@ -12,8 +12,8 @@ export function CarouselImage({ alt, src, className }: ItemCarrousel) {
 	const ShowImage = () => {
 		if (src) {
 			return (
-				<picture className="max-h-full overflow-hidden">
-					<img src={src} alt={alt} className="h-auto w-full object-cover" />
+				<picture className="overflow-hidden">
+					<img src={src} alt={alt} className="h-full w-full object-cover" />
 				</picture>
 			);
 		}
