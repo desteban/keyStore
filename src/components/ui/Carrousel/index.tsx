@@ -23,7 +23,9 @@ export default function Carrousel({
 }: CarouselProps) {
 	const size = Children.count(children);
 	const [currentItem, setCurrentItem] = useState(0);
-	const stylesCarouselContainer = `${styles['carousel-container']} ${className}`;
+	const stylesCarouselContainer = `${
+		scrollType === 'smooth' ? styles['carousel-container'] : styles['simply-container']
+	} ${className}`;
 	const carouselInner = useRef<HTMLDivElement>(null);
 	const openSlide = styles['carousel-inner-item-open'];
 
@@ -55,7 +57,9 @@ export default function Carrousel({
 	};
 
 	const simplyScroll = (scrollBySliding: number) => {
-		console.log('simply', scrollBySliding);
+		if (carouselInner.current) {
+			carouselInner.current.style.transform = `translateX(-${scrollBySliding * 100}%)`;
+		}
 	};
 
 	const changeSlide = (slide: number) => {
@@ -82,21 +86,44 @@ export default function Carrousel({
 
 	return (
 		<div id={id} className={stylesCarouselContainer}>
-			<div>
+			<div className={styles['carousel-control-prev']}>
 				<Button variant="outline" onClick={Prev}>
 					{'<'}
 				</Button>
 			</div>
 
-			<div ref={carouselInner} className={styles['carousel-slider-container']}>
-				{children}
-			</div>
+			<Wrapper scrollType={scrollType}>
+				<div
+					ref={carouselInner}
+					className={
+						scrollType === 'smooth'
+							? styles['carousel-slider-container']
+							: styles['simply-carousel-inner']
+					}
+				>
+					{children}
+				</div>
+			</Wrapper>
 
-			<div>
+			<div className={styles['carousel-control-next']}>
 				<Button variant="outline" onClick={Next}>
 					{'>'}
 				</Button>
 			</div>
 		</div>
 	);
+}
+
+function Wrapper({
+	children,
+	scrollType,
+}: {
+	children: React.ReactNode;
+	scrollType: ScrollType;
+}) {
+	if (scrollType === 'simply') {
+		return <div className={styles['simply-carousel']}>{children}</div>;
+	}
+
+	return <>{children}</>;
 }
