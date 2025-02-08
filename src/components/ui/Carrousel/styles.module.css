@@ -35,15 +35,16 @@
 	height: 100%;
 	width: 100%;
 	transition-duration: 700ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	/* transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .carousel-inner-item-open {
+	scale: 1 !important;
 	flex: 1 1 0% !important;
 }
 
 .carousel-inner-item-close {
-	width: 100%;
+	scale: 0;
 	flex: 0;
 }
 

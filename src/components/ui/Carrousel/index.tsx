@@ -42,14 +42,14 @@ export default function Carrousel({
 		for (let index = 0; index < size; index++) {
 			if (scrollBySliding === index) {
 				carouselInner.current?.children[index].classList.add(openSlide);
-				carouselInner.current?.children[index].classList.remove(
-					styles['hide-content-smooth'],
-				);
+				// carouselInner.current?.children[index].classList.remove(
+				// 	styles['hide-content-smooth'],
+				// );
 			} else {
 				carouselInner.current?.children[index].classList.remove(openSlide);
-				carouselInner.current?.children[index].classList.add(
-					styles['hide-content-smooth'],
-				);
+				// carouselInner.current?.children[index].classList.add(
+				// 	styles['hide-content-smooth'],
+				// );
 			}
 		}
 	};
