@@ -24,7 +24,7 @@ export default function Drawer({ children, onClose, open }: Props) {
 
 			<div
 				className={`${styles['drawer-container']} ${
-					open ? styles['drawer-container-open'] : ''
+					open ? styles['drawer-container-open'] : styles['drawer-container-close']
 				}`}
 			>
 				{children}
