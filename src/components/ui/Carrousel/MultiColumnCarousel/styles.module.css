@@ -1,0 +1,44 @@
+.container {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.carousel {
+	width: 100%;
+	height: 100%;
+	overflow-x: auto;
+	white-space: nowrap;
+	transition: all ease-in 400ms;
+}
+
+.item,
+.carousel > * {
+	width: 70%;
+	height: 100%;
+	display: inline-block;
+	padding: 0px 0.5rem;
+	overflow: hidden;
+	position: relative;
+	overflow: hidden;
+}
+
+@media screen and (min-width: 1024px) {
+	.carousel {
+		display: flex;
+		flex-wrap: nowrap;
+		width: auto;
+		overflow-x: visible;
+		/* display: flex;
+		flex-wrap: nowrap;
+		transition: all ease-out 400ms;
+		background-color: red;
+		overflow-x: visible; */
+	}
+
+	.item,
+	.carousel > * {
+		min-width: 50%;
+		display: block;
+	}
+}

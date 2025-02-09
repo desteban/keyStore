@@ -15,7 +15,7 @@ export default function Slides() {
 				id="offer"
 				interval={3000000}
 				className="mt-4 h-56 md:h-96"
-				scrollType="smooth"
+				scrollType="simply"
 			>
 				<CarouselImage alt="random" src={image1.src} />
 				<CarouselItem>
@@ -29,11 +29,7 @@ export default function Slides() {
 						</p>
 					</div>
 				</CarouselItem>
-				<CarouselItem>
-					<figure className="w-full h-full">
-						<img alt="random" src={image2.src} className="w-full object-cover" />
-					</figure>
-				</CarouselItem>
+				<CarouselImage alt="random" src={image2.src} />
 				<CarouselImage alt="random" src={image3.src} />
 				<CarouselImage alt="random" src={image4.src} />
 			</Carrousel>
