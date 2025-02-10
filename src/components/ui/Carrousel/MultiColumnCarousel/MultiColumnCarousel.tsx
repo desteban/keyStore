@@ -1,64 +1,69 @@
 'use client';
 
+import { ScreenSize } from '@/types/ScreenSize';
 import { Button } from '../../Button/Button';
+import { ColumnsConfig, MultiColumnProvider } from './context/MultiColumnCarouselContext';
 import styles from './styles.module.css';
-import { Children, useEffect, useRef, useState } from 'react';
+import { Children, useEffect } from 'react';
+import { useWidthScreen } from '@/hooks/WidthScreen';
+import { useMultiColumnCarousel } from './hooks/useMultiColumnCarousel';
 
 interface Props {
 	children: React.ReactNode;
-	columns: number;
+	columns: ColumnsConfig;
 	className?: string;
 }
 
-export default function MultiColumnCarousel({ children, columns, className }: Props) {
+export default function MultiColumnCarousel({
+	children,
+	columns = { smScreenColumn: 2 },
+	className,
+}: Props) {
 	const size = Children.count(children);
-	const totalScroll = Math.ceil(size / columns);
-	const [currentItem, setCurrentItem] = useState(0);
-	const carouselInner = useRef<HTMLDivElement>(null);
+	const { widthScreen } = useWidthScreen();
+	const { setTotalScroll, carouselInner, Next, Prev } = useMultiColumnCarousel({
+		columns,
+	});
 
 	useEffect(() => {
-		simplyScroll();
-	}, [currentItem]);
-
-	const simplyScroll = () => {
-		if (carouselInner.current) {
-			carouselInner.current.style.transform = `translateX(-${currentItem * 100}%)`;
-		}
-	};
-
-	const Prev = () => {
-		let slide = currentItem - 1;
-		console.log(slide);
-
-		if (slide < 0) {
-			console.log('total', totalScroll);
-
-			slide = totalScroll - 1;
+		if (widthScreen > 0 && widthScreen < ScreenSize.Medium) {
+			setTotalScroll(calculateTotalScroll(columns.smScreenColumn));
 		}
 
-		setCurrentItem(slide);
-	};
-
-	const Next = () => {
-		let slide = currentItem + 1;
-		if (slide >= totalScroll) {
-			slide = 0;
+		if (widthScreen >= ScreenSize.Medium && widthScreen < ScreenSize.Large) {
+			setTotalScroll(
+				calculateTotalScroll(columns.mdScreenColumn ?? columns.smScreenColumn),
+			);
 		}
 
-		setCurrentItem(slide);
-	};
+		if (widthScreen >= ScreenSize.Large && widthScreen < ScreenSize.ExtraLarge) {
+			setTotalScroll(
+				calculateTotalScroll(columns.lgScreenColumn ?? columns.smScreenColumn),
+			);
+		}
+
+		if (widthScreen >= ScreenSize.ExtraLarge) {
+			setTotalScroll(
+				calculateTotalScroll(columns.xlScreenColumn ?? columns.smScreenColumn),
+			);
+		}
+	}, [widthScreen]);
+
+	const calculateTotalScroll = (columns: number) => Math.ceil(size / columns);
 
 	return (
-		<div className="">
-			<div className={[styles.container, className].join(' ')}>
-				<div className={`${styles.carousel}`} ref={carouselInner}>
-					{children}
+		<MultiColumnProvider columnsConfig={columns}>
+			<div className="">
+				<div className={[styles.container, className].join(' ')}>
+					<div className={`${styles.carousel}`} ref={carouselInner}>
+						{children}
+					</div>
+				</div>
+				<div className="space-x-3 mt-3">
+					<Button onClick={Prev}>back</Button>
+					<Button onClick={Next}>next</Button>
 				</div>
 			</div>
-			<div className="space-x-3 mt-3">
-				<Button onClick={Prev}>back</Button>
-				<Button onClick={Next}>next</Button>
-			</div>
-		</div>
+		</MultiColumnProvider>
 	);
 }
