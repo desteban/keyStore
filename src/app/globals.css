@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+@define-mixin lightTheme {
 	--background: hsl(0, 0%, 96%);
 	--foreground: hsl(214 44% 19%);
 	--heading: hsl(214 100% 15%);
@@ -26,12 +26,7 @@
 	--rounded-lg: 0.6rem;
 }
 
-/* @media (prefers-color-scheme: dark) {
-	:root {
-	}
-} */
-
-.dark {
+@define-mixin darkTheme {
 	--background: hsl(216 100% 10%);
 	--foreground: hsl(216 45% 81%);
 	--heading: hsl(60 100% 100%);
@@ -52,8 +47,22 @@
 	--links: hsl(170 100% 46%);
 }
 
-@theme {
-	--color-fondo: hsl(216, 100%, 10%);
+:root {
+	@mixin lightTheme;
+}
+
+.dark {
+	@mixin darkTheme;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		@mixin darkTheme;
+	}
+
+	.light {
+		@mixin lightTheme;
+	}
 }
 
 body {

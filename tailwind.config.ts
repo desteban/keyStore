@@ -1,3 +1,4 @@
+import { ScreenSize } from './src/types/ScreenSize';
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -7,6 +8,12 @@ export default {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		screens: {
+			sm: ScreenSize.Small + 'px',
+			md: ScreenSize.Medium + 'px',
+			lg: ScreenSize.Large + 'px',
+			xl: ScreenSize.ExtraLarge + 'px',
+		},
 		extend: {
 			colors: {
 				background: 'var(--background)',

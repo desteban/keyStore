@@ -2,10 +2,10 @@
 
 import { ReactNode, createContext, useEffect, useState } from 'react';
 
-type themes = 'light' | 'dark';
+type Themes = 'light' | 'dark';
 
 interface Context {
-	theme: themes;
+	theme: Themes | null;
 	changeTheme(): void;
 }
 
@@ -15,26 +15,33 @@ export const ThemeContext = createContext<Context>({
 });
 
 export function ThemeContextProvider({ children }: { children: ReactNode }) {
-	const [theme, setTheme] = useState<themes>(() => {
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			return 'dark';
-		}
-
-		return 'light';
-	});
+	const [isClient, setIsClient] = useState(false);
+	const [theme, setTheme] = useState<Themes | null>(null);
 
 	useEffect(() => {
-		if (theme === 'dark') {
-			document.querySelector('html')?.classList.add('dark');
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			setTheme('dark');
 		} else {
-			document.querySelector('html')?.classList.remove('dark');
+			setTheme('light');
 		}
-	}, [theme]);
+
+		setIsClient(true);
+	}, []);
+
+	useEffect(() => {
+		if (isClient) {
+			if (theme === 'dark') {
+				document.querySelector('html')?.classList.add('dark');
+				document.querySelector('html')?.classList.remove('light');
+			} else {
+				document.querySelector('html')?.classList.remove('dark');
+				document.querySelector('html')?.classList.add('light');
+			}
+		}
+	}, [theme, isClient]);
 
 	const changeTheme = () => {
 		setTheme(theme === 'dark' ? 'light' : 'dark');
-		console.log('change');
-		
 	};
 
 	return (

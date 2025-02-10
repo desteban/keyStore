@@ -13,9 +13,8 @@ export default function ItemMultiColumnCarousel({ children }: Props) {
 
 	useEffect(() => {
 		if (container.current) {
-			const width = (100 / columnsByScreen).toString();
-			console.log('width', width);
-			container.current.style.minWidth = width + '%';
+			const minWidth = (100 / columnsByScreen).toString();
+			container.current.style.minWidth = minWidth + '%';
 		}
 	}, [columnsByScreen]);
 
