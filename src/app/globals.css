@@ -15,12 +15,12 @@
 	--card-background: hsl(0, 0%, 100%);
 	--card-heading: hsl(214 100% 15%);
 	--card-foreground: hsl(214 44% 19%);
-	--card-highlight: hsl(350 100% 66%);
+	--card-highlight: hsl(350 51% 40%);
 
 	--primary: hsl(171 100% 46%);
 	--secondary: hsl(350 100% 66%);
 	--tertiary: hsl(51 98% 65%);
-	--links: hsl(171 100% 26%);
+	--links: hsl(171 100% 18%);
 
 	--rounded: 0.4rem;
 	--rounded-lg: 0.6rem;
@@ -39,12 +39,12 @@
 	--card-background: hsl(210 18% 96%);
 	--card-heading: hsl(214 100% 15%);
 	--card-foreground: hsl(214 44% 19%);
-	--card-highlight: hsl(350 100% 66%);
+	--card-highlight: hsl(350 51% 38%);
 
 	--primary: hsl(171 100% 46%);
 	--secondary: hsl(350 100% 66%);
 	--tertiary: hsl(51 98% 65%);
-	--links: hsl(170 100% 46%);
+	--links: hsl(170 100% 36%);
 }
 
 :root {
