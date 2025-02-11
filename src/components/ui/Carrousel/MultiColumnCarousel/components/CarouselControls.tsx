@@ -20,6 +20,8 @@ export default function CarouselControls({ onNext, onPrev }: Props) {
 				variant="none"
 				className={showButtons ? styles.prev : 'hidden'}
 				onClick={onPrev}
+				title="Atrás"
+				aria-label="Slide anterior"
 			>
 				<PrevIcon size={20} />
 			</Button>
@@ -27,6 +29,8 @@ export default function CarouselControls({ onNext, onPrev }: Props) {
 				variant="none"
 				className={showButtons ? styles.next : 'hidden'}
 				onClick={onNext}
+				title="Siguiente"
+				aria-label="siguiente slide"
 			>
 				<NextIcon size={20} />
 			</Button>

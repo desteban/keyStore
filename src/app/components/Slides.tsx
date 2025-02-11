@@ -21,14 +21,21 @@ export default function Slides(props?: Props) {
 		<div className="relative px-5">
 			<Carrousel
 				id="offer"
-				interval={500000}
+				interval={10000}
 				className="mt-4 h-56 md:h-96"
 				scrollType={scrollType}
 			>
 				<CarouselItem>
 					<picture className="overflow-hidden flex flex-col items-center justify-center h-full w-full">
 						<img src={image2.src} alt="random" className="w-full object-cover" />
-						<Button className="absolute right-7 bottom-3">Clic</Button>
+						<Button
+							typeOfButton="link"
+							href="/slide"
+							className="absolute right-7 bottom-3"
+							variant="primary"
+						>
+							Clic
+						</Button>
 					</picture>
 				</CarouselItem>
 				<CarouselImage alt="random" src={image1.src} />

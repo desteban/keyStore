@@ -1,24 +1,23 @@
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { MatchVariant } from './MatchVariant';
 import { Variants } from './Variants';
 import styles from './styles.module.css';
 
 type PropsComponent = {
 	variant?: Variants;
-	children?: React.ReactNode;
+	children: React.ReactNode;
+	className?: string;
+	onClick?: () => void;
+	title?: string;
 };
 
-interface ButtonProps
-	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-		PropsComponent {
+interface ButtonProps extends PropsComponent {
 	typeOfButton?: 'button';
-	// children: React.ReactNode
 }
 
-interface LinkPropsComponent extends LinkProps, PropsComponent {
+interface LinkPropsComponent extends PropsComponent {
 	typeOfButton?: 'link';
-	// children: React.ReactNode;
-	className?: string;
+	href: string;
 }
 
 type Props = ButtonProps | LinkPropsComponent;
@@ -30,9 +29,9 @@ export function Button(props: Props) {
 	cssClass += ' ' + className;
 
 	if (typeOfButton === 'link') {
-		const { href, ...linkProps } = props as LinkPropsComponent;
+		const { href, typeOfButton, ...linkProps } = props as LinkPropsComponent;
 		return (
-			<Link href={href} {...linkProps}>
+			<Link href={href} {...linkProps} className={cssClass}>
 				{props.children}
 			</Link>
 		);

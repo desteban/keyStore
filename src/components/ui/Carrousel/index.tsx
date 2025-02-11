@@ -89,7 +89,12 @@ export default function Carrousel({
 	return (
 		<div id={id} className={stylesCarouselContainer}>
 			<div className={styles['carousel-control-prev']}>
-				<Button variant="outline" onClick={Prev}>
+				<Button
+					variant="outline"
+					onClick={Prev}
+					title="Atrás"
+					aria-label="Slide anterior"
+				>
 					<PrevIcon />
 				</Button>
 			</div>
@@ -108,7 +113,12 @@ export default function Carrousel({
 			</Wrapper>
 
 			<div className={styles['carousel-control-next']}>
-				<Button variant="outline" onClick={Next}>
+				<Button
+					variant="outline"
+					onClick={Next}
+					title="Siguiente"
+					aria-label="siguiente slide"
+				>
 					<NextIcon />
 				</Button>
 			</div>
