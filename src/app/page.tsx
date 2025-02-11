@@ -25,7 +25,9 @@ export default function Home() {
 						</a>{' '}
 						project with Tailwind CSS and TypeScript.
 					</p>
-					<Button className="mt-4">Change theme</Button>
+					<Button className="mt-4" type="button">
+						Clic
+					</Button>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-4">
 						<Card>

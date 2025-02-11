@@ -13,6 +13,7 @@ type PropsComponent = {
 
 interface ButtonProps extends PropsComponent {
 	typeOfButton?: 'button';
+	type?: 'button' | 'submit' | 'reset';
 }
 
 interface LinkPropsComponent extends PropsComponent {
@@ -23,24 +24,34 @@ interface LinkPropsComponent extends PropsComponent {
 type Props = ButtonProps | LinkPropsComponent;
 
 export function Button(props: Props) {
-	const { variant = 'primary', typeOfButton = 'button', className = '' } = props;
+	const {
+		variant = 'primary',
+		typeOfButton = 'button',
+		className = '',
+		children,
+		...data
+	} = props;
 	let cssClass = styles.btn;
 	cssClass += ` ${MatchVariant(variant)}`;
 	cssClass += ' ' + className;
 
 	if (typeOfButton === 'link') {
-		const { href, typeOfButton, ...linkProps } = props as LinkPropsComponent;
+		const { href, ...linkProps } = data as LinkPropsComponent;
 		return (
 			<Link href={href} {...linkProps} className={cssClass}>
-				{props.children}
+				{children}
 			</Link>
 		);
 	}
-	const { ...buttonProps } = props as ButtonProps;
+
+	if (props.typeOfButton === 'button') {
+	}
+
+	const { ...buttonProps } = data as ButtonProps;
 
 	return (
 		<button {...buttonProps} className={cssClass}>
-			{props.children}
+			{children}
 		</button>
 	);
 }
