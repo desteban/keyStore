@@ -3,6 +3,8 @@
 import React, { Children, useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import styles from './styles.module.css';
+import PrevIcon from '@/assets/Icons/PrevIcon';
+import NextIcon from '@/assets/Icons/NextIcon';
 
 type ScrollType = 'simply' | 'smooth';
 
@@ -88,7 +90,7 @@ export default function Carrousel({
 		<div id={id} className={stylesCarouselContainer}>
 			<div className={styles['carousel-control-prev']}>
 				<Button variant="outline" onClick={Prev}>
-					{'<'}
+					<PrevIcon />
 				</Button>
 			</div>
 
@@ -107,7 +109,7 @@ export default function Carrousel({
 
 			<div className={styles['carousel-control-next']}>
 				<Button variant="outline" onClick={Next}>
-					{'>'}
+					<NextIcon />
 				</Button>
 			</div>
 		</div>
