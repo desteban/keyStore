@@ -8,19 +8,19 @@ import image2 from '@assets/2.jpg';
 import image3 from '@assets/3.jpg';
 import image4 from '@assets/4.jpg';
 
-type ScrollType = 'simply' | 'smooth'
+type ScrollType = 'simply' | 'smooth';
 
 interface Props {
-	scrollType?: ScrollType
+	scrollType?: ScrollType;
 }
 
 export default function Slides(props?: Props) {
-	const { scrollType = 'simply' } = props || {}
+	const { scrollType = 'simply' } = props || {};
 	return (
 		<div className="relative px-5">
 			<Carrousel
 				id="offer"
-				interval={3000000}
+				interval={5000}
 				className="mt-4 h-56 md:h-96"
 				scrollType={scrollType}
 			>

@@ -12,60 +12,94 @@ export default function page() {
 		<main className="">
 			<Header variant="static" />
 
-			<section className="mt-5container mx-auto px-7 py-10">
+			<section className="mt-5">
 				<h2>Multi Column</h2>
-				<MultiColumnCarousel
-					columns={{ smScreenColumn: 2, lgScreenColumn: 3, xlScreenColumn: 4 }}
-					className="h-96"
-				>
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image1.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
+				<div className="px-5">
+					<MultiColumnCarousel
+						columns={{ smScreenColumn: 2, lgScreenColumn: 3, xlScreenColumn: 4 }}
+						className="h-96"
+					>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image1.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
 
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image2.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image2.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
 
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image3.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image3.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
 
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image4.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image4.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
 
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image1.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image1.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
 
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image2.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image2.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
 
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image3.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image3.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
 
-					<ItemMultiColumnCarousel>
-						<picture>
-							<img src={image4.src} alt="random" className="w-full h-full object-cover" />
-						</picture>
-					</ItemMultiColumnCarousel>
-				</MultiColumnCarousel>
+						<ItemMultiColumnCarousel>
+							<picture>
+								<img
+									src={image4.src}
+									alt="random"
+									className="w-full h-full object-cover"
+								/>
+							</picture>
+						</ItemMultiColumnCarousel>
+					</MultiColumnCarousel>
+				</div>
 
 				<h2>Simply</h2>
 				<Slides />
