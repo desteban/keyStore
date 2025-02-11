@@ -8,6 +8,7 @@ import { Button } from '../Button/Button';
 import Drawer from '../Drawer/Drawer';
 import MenuRounded from '@/assets/Icons/MenuRounded';
 import CloseIcon from '@/assets/Icons/CloseIcon';
+import Link from 'next/link';
 
 interface props {
 	variant?: Variants;
@@ -38,8 +39,8 @@ export default function Header({ variant = 'static', className = '' }: props) {
 					</div>
 					<h5>Menu Drawer</h5>
 					<ul>
-						<li>Home</li>
-						<li>Slides</li>
+						<li><Link href={'/'} >Home</Link></li>
+						<li><Link href={'/slide'}>Slides</Link></li>
 					</ul>
 				</div>
 			</Drawer>

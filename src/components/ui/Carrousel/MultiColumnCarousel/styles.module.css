@@ -24,6 +24,25 @@
 	overflow: hidden;
 }
 
+@define-mixin button {
+	position: absolute;
+	top: 50%;
+	height: 40px;
+	width: 40px;
+	padding: 0px !important;
+	border-radius: 100% !important;
+	background-color: black;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.prev,
+.next {
+	display: none;
+}
+
 @media screen and (min-width: 768px) {
 	.item,
 	.carousel > * {
@@ -43,5 +62,15 @@
 	.carousel > * {
 		/* min-width: 50%; */
 		display: block;
+	}
+
+	.prev {
+		@mixin button;
+		left: -20px;
+	}
+
+	.next {
+		@mixin button;
+		right: -20px;
 	}
 }

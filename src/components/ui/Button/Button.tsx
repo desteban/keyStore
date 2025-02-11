@@ -14,7 +14,7 @@ interface ButtonProps {
 export function Button({
 	children,
 	onClick,
-	className,
+	className = '',
 	variant = 'primary',
 	'aria-label': ariaLabel,
 	title,
@@ -22,7 +22,7 @@ export function Button({
 	let cssClass = styles.btn;
 	cssClass += ` ${MatchVariant(variant)}`;
 
-	cssClass += className ? ` ${className}` : '';
+	cssClass += ' ' + className;
 	return (
 		<button className={cssClass} onClick={onClick} aria-label={ariaLabel} title={title}>
 			{children}

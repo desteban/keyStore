@@ -1,12 +1,12 @@
 'use client';
 
 import { ScreenSize } from '@/types/ScreenSize';
-import { Button } from '../../Button/Button';
 import { ColumnsConfig, MultiColumnProvider } from './context/MultiColumnCarouselContext';
 import styles from './styles.module.css';
 import { Children, useEffect } from 'react';
 import { useWidthScreen } from '@/hooks/WidthScreen';
 import { useMultiColumnCarousel } from './hooks/useMultiColumnCarousel';
+import CarouselControls from './components/CarouselControls';
 
 interface Props {
 	children: React.ReactNode;
@@ -53,16 +53,13 @@ export default function MultiColumnCarousel({
 
 	return (
 		<MultiColumnProvider columnsConfig={columns}>
-			<div className="">
+			<div className="relative">
 				<div className={[styles.container, className].join(' ')}>
 					<div className={`${styles.carousel}`} ref={carouselInner}>
 						{children}
 					</div>
 				</div>
-				<div className="space-x-3 mt-3">
-					<Button onClick={Prev}>back</Button>
-					<Button onClick={Next}>next</Button>
-				</div>
+				<CarouselControls onNext={Next} onPrev={Prev} />
 			</div>
 		</MultiColumnProvider>
 	);

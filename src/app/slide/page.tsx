@@ -3,14 +3,19 @@ import image2 from '@assets/2.jpg';
 import image3 from '@assets/3.jpg';
 import image4 from '@assets/4.jpg';
 import MultiColumnCarousel from '@/components/ui/Carrousel/MultiColumnCarousel/MultiColumnCarousel';
-import ItemMultiColumnCarousel from '@/components/ui/Carrousel/MultiColumnCarousel/ItemMultiColumnCarousel';
+import Header from '@/components/ui/Header/Header';
+import ItemMultiColumnCarousel from '@/components/ui/Carrousel/MultiColumnCarousel/components/ItemMultiColumnCarousel';
+import Slides from '../components/Slides';
 
 export default function page() {
 	return (
-		<main className="container mx-auto px-7 py-10">
-			<div>
+		<main className="">
+			<Header variant="static" />
+
+			<section className="mt-5container mx-auto px-7 py-10">
+				<h2>Multi Column</h2>
 				<MultiColumnCarousel
-					columns={{ smScreenColumn: 2, xlScreenColumn: 4 }}
+					columns={{ smScreenColumn: 2, lgScreenColumn: 3, xlScreenColumn: 4 }}
 					className="h-96"
 				>
 					<ItemMultiColumnCarousel>
@@ -61,7 +66,13 @@ export default function page() {
 						</picture>
 					</ItemMultiColumnCarousel>
 				</MultiColumnCarousel>
-			</div>
+
+				<h2>Simply</h2>
+				<Slides />
+
+				<h2>Smooth</h2>
+				<Slides scrollType="smooth" />
+			</section>
 		</main>
 	);
 }

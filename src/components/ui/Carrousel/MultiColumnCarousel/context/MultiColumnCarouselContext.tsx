@@ -4,6 +4,7 @@ import { createContext, useState } from 'react';
 interface MultiColumnCarouselContextProps {
 	columnsConfig: ColumnsConfig;
 	columnsByScreen: number;
+	widthScreen: number;
 }
 
 export interface ColumnsConfig {
@@ -23,6 +24,7 @@ const ColumnsConfig: ColumnsConfig = {
 export const MultiColumnCarouselContext = createContext<MultiColumnCarouselContextProps>({
 	columnsConfig: ColumnsConfig,
 	columnsByScreen: 2,
+	widthScreen: 1024,
 });
 
 interface Props {
@@ -33,7 +35,7 @@ interface Props {
 export function MultiColumnProvider({ children, columnsConfig }: Props) {
 	const columnsInSmScreen = columnsConfig.smScreenColumn;
 	const [columnsByScreen, setColumnsByScreen] = useState<number>(2);
-	const {} = useWidthScreen({
+	const { widthScreen } = useWidthScreen({
 		onSm() {
 			setColumnsByScreen(columnsConfig.smScreenColumn);
 		},
@@ -49,7 +51,9 @@ export function MultiColumnProvider({ children, columnsConfig }: Props) {
 	});
 
 	return (
-		<MultiColumnCarouselContext.Provider value={{ columnsConfig, columnsByScreen }}>
+		<MultiColumnCarouselContext.Provider
+			value={{ columnsConfig, columnsByScreen, widthScreen }}
+		>
 			{children}
 		</MultiColumnCarouselContext.Provider>
 	);
