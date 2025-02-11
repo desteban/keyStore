@@ -13,7 +13,7 @@ export default function page() {
 			<Header variant="static" />
 
 			<section className="mt-5 pb-10">
-				<h2 className="text-xl font-semibold container mx-auto mt-4">Multi Column</h2>
+				<h2 className="text-xl font-semibold container mx-auto mt-4 px-4">Multi Column</h2>
 				<div className="px-5">
 					<MultiColumnCarousel
 						columns={{ smScreenColumn: 2, lgScreenColumn: 3, xlScreenColumn: 4 }}
@@ -101,10 +101,10 @@ export default function page() {
 					</MultiColumnCarousel>
 				</div>
 
-				<h2 className="text-xl font-semibold container mx-auto mt-4">Simply</h2>
+				<h2 className="text-xl font-semibold container mx-auto mt-4 px-4">Simply</h2>
 				<Slides />
 
-				<h2 className="text-xl font-semibold container mx-auto mt-4">Smooth</h2>
+				<h2 className="text-xl font-semibold container mx-auto mt-4 px-4">Smooth</h2>
 				<Slides scrollType="smooth" />
 			</section>
 		</main>

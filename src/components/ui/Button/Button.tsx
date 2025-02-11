@@ -1,31 +1,47 @@
+import Link, { LinkProps } from 'next/link';
 import { MatchVariant } from './MatchVariant';
 import { Variants } from './Variants';
 import styles from './styles.module.css';
 
-interface ButtonProps {
-	onClick?: () => void;
-	children: React.ReactNode;
-	className?: string;
+type PropsComponent = {
 	variant?: Variants;
-	'aria-label'?: string;
-	title?: string;
+	children?: React.ReactNode;
+};
+
+interface ButtonProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+		PropsComponent {
+	typeOfButton?: 'button';
+	// children: React.ReactNode
 }
 
-export function Button({
-	children,
-	onClick,
-	className = '',
-	variant = 'primary',
-	'aria-label': ariaLabel,
-	title,
-}: ButtonProps) {
+interface LinkPropsComponent extends LinkProps, PropsComponent {
+	typeOfButton?: 'link';
+	// children: React.ReactNode;
+	className?: string;
+}
+
+type Props = ButtonProps | LinkPropsComponent;
+
+export function Button(props: Props) {
+	const { variant = 'primary', typeOfButton = 'button', className = '' } = props;
 	let cssClass = styles.btn;
 	cssClass += ` ${MatchVariant(variant)}`;
-
 	cssClass += ' ' + className;
+
+	if (typeOfButton === 'link') {
+		const { href, ...linkProps } = props as LinkPropsComponent;
+		return (
+			<Link href={href} {...linkProps}>
+				{props.children}
+			</Link>
+		);
+	}
+	const { ...buttonProps } = props as ButtonProps;
+
 	return (
-		<button className={cssClass} onClick={onClick} aria-label={ariaLabel} title={title}>
-			{children}
+		<button {...buttonProps} className={cssClass}>
+			{props.children}
 		</button>
 	);
 }

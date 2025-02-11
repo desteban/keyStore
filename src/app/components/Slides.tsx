@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/Button/Button';
 import Carrousel from '@/components/ui/Carrousel';
 import { CarouselImage } from '@/components/ui/Carrousel/CarouselImage';
 import { CarouselItem } from '@/components/ui/Carrousel/ItemCarrousel';
@@ -20,22 +21,17 @@ export default function Slides(props?: Props) {
 		<div className="relative px-5">
 			<Carrousel
 				id="offer"
-				interval={5000}
+				interval={500000}
 				className="mt-4 h-56 md:h-96"
 				scrollType={scrollType}
 			>
-				<CarouselImage alt="random" src={image1.src} />
 				<CarouselItem>
-					<div className="flex flex-col items-center justify-center h-full">
-						<h5>Hola</h5>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia nulla nam
-							totam ab quidem cumque, nesciunt quibusdam rerum neque dolor sed,
-							perspiciatis adipisci voluptas hic, beatae obcaecati tenetur. Mollitia,
-							illum.
-						</p>
-					</div>
+					<picture className="overflow-hidden flex flex-col items-center justify-center h-full w-full">
+						<img src={image2.src} alt="random" className="w-full object-cover" />
+						<Button className="absolute right-7 bottom-3">Clic</Button>
+					</picture>
 				</CarouselItem>
+				<CarouselImage alt="random" src={image1.src} />
 				<CarouselImage alt="random" src={image2.src} />
 				<CarouselImage alt="random" src={image3.src} />
 				<CarouselImage alt="random" src={image4.src} />
