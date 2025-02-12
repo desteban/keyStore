@@ -21,6 +21,8 @@
 	--secondary: hsl(350 100% 66%);
 	--tertiary: hsl(51 98% 65%);
 	--links: hsl(171 100% 18%);
+	--color-links-header: hsl(171 100% 18%);
+
 
 	--rounded: 0.4rem;
 	--rounded-lg: 0.6rem;

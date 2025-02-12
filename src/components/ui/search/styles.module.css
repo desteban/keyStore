@@ -1,0 +1,26 @@
+.container {
+	position: relative;
+}
+
+.form {
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	border-radius: var(--rounded);
+}
+
+.form:focus-within {
+	border: 2px solid blue;
+}
+
+.form button {
+	padding: 0.5rem;
+}
+
+.input,
+.container input {
+	padding: 0.5rem 1rem;
+	background-color: transparent;
+	width: 100%;
+	outline: none;
+}
