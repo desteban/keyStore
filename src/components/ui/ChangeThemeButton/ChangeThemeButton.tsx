@@ -56,6 +56,7 @@ export default function ChangeThemeButton({
 			title={title}
 			className={className}
 		>
+			<p className='visually-hidden'>Cambiar el tema de la pagina</p>
 			<Icon />
 		</Button>
 	);

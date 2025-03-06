@@ -4,6 +4,8 @@ import { ReactNode, createContext, useEffect, useState } from 'react';
 
 type Themes = 'light' | 'dark';
 
+const IS_SERVER = typeof window === 'undefined';
+
 interface Context {
 	theme: Themes | null;
 	changeTheme(): void;
@@ -19,6 +21,9 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
 	const [theme, setTheme] = useState<Themes | null>(null);
 
 	useEffect(() => {
+		if (IS_SERVER === false) {
+			console.log('cliente');
+		}
 		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			setTheme('dark');
 		} else {

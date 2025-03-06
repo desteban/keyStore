@@ -53,7 +53,8 @@ export default function SearchInput({
 					list="options"
 					autoComplete="off"
 				/>
-				<Button type="submit" variant="none">
+				<Button type="submit" variant="none" aria-label="Buscar" title="Buscar">
+					<span className="visually-hidden">Buscar</span>
 					<SearchIcon />
 				</Button>
 			</form>

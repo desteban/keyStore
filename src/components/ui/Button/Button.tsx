@@ -9,6 +9,9 @@ type PropsComponent = {
 	className?: string;
 	onClick?: () => void;
 	title?: string;
+	"aria-label"?: string;
+	"aria-labelledby"?: string;
+	"aria-describedby"?: string;
 };
 
 interface ButtonProps extends PropsComponent {

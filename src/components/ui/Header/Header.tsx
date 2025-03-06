@@ -34,7 +34,7 @@ export default function Header({ variant = 'static', className = '' }: props) {
 						<b>K</b>ey<b>S</b>tore
 					</span>
 				</div>
-				<div className="lg:w-full flex flex-col items-center">
+				<div className="lg:w-full flex flex-col items-center text-xl">
 					<SearchInput className="" placeholder="Windows, Adobe, AutoCad..." />
 					<nav>
 						<ul className={styles.nav}>
@@ -64,7 +64,14 @@ export default function Header({ variant = 'static', className = '' }: props) {
 			<Drawer open={open} onClose={toggleOpenDrawer}>
 				<div>
 					<div className="h-10 flex flex-row-reverse items-center">
-						<Button variant="none" onClick={toggleOpenDrawer} className="!p-0">
+						<Button
+							variant="none"
+							onClick={toggleOpenDrawer}
+							className="!p-0"
+							aria-label="Cerrar menú"
+							title="Cerrar menú"
+						>
+							<span className="visually-hidden">Cerrar menu</span>
 							<CloseIcon />
 						</Button>
 					</div>
